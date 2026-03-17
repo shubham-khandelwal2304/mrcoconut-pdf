@@ -1,0 +1,8 @@
+# Render Blueprint - Deploy with "New" > "Blueprint" in Render Dashboard
+services:
+  - type: web
+    name: pdf-generator
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    plan: starter
+    healthCheckPath: /health

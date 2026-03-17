@@ -1,0 +1,9 @@
+myenv/
+__pycache__/
+*.pyc
+.env
+.venv/
+venv/
+_temp_render.html
+*.pdf
+.DS_Store

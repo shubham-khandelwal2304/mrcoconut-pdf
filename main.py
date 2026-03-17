@@ -20,18 +20,20 @@ env = Environment(
 )
 
 class PdfRequest(BaseModel):
-    plan_type: str
+    package_type: str
     customer_name: str = ""
     event_type: str = ""
     event_date: str = ""
     city: str = ""
-    coconuts: str = ""
-    cartons: str = ""
-    coconut_rate: str = ""
-    transportation_cost: str = ""
-    staff_cost: str = ""
-    total_amount: str = ""
+    coconuts: str | int = ""
+    cartons: str | int = ""
+    coconut_rate: str | int = ""
+    transportation_cost: str | int = ""
+    staff_cost: str | int = ""
+    total_cost: str | int = ""
     phone: str = "+91-9799999069"
+
+    model_config = {"extra": "ignore"}
 
 def render_pdf(html: str) -> bytes:
     # Write to temp file in project dir so relative paths (static/...) resolve for local images
@@ -65,10 +67,10 @@ def generate_pdf(data: PdfRequest):
         "diamond": "diamond.html",
     }
 
-    plan = data.plan_type.lower().strip()
+    plan = data.package_type.lower().strip()
 
     if plan not in templates:
-        raise HTTPException(status_code=400, detail="Invalid plan_type")
+        raise HTTPException(status_code=400, detail="Invalid package_type")
 
     template = env.get_template(templates[plan])
 
@@ -78,12 +80,12 @@ def generate_pdf(data: PdfRequest):
         event_type=data.event_type,
         event_date=data.event_date,
         city=data.city,
-        coconuts=data.coconuts,
-        cartons=data.cartons,
-        coconut_rate=data.coconut_rate,
-        transportation_cost=data.transportation_cost,
-        staff_cost=data.staff_cost,
-        total_amount=data.total_amount,
+        coconuts=str(data.coconuts),
+        cartons=str(data.cartons),
+        coconut_rate=str(data.coconut_rate),
+        transportation_cost=str(data.transportation_cost),
+        staff_cost=str(data.staff_cost),
+        total_amount=str(data.total_cost),
         phone=data.phone,
     )
 

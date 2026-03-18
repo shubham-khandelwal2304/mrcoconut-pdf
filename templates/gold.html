@@ -2,351 +2,353 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=794, initial-scale=1.0">
     <title>Mr. Coconut - Gold Plan Flyer</title>
     <style>
         :root {
-            --gold-color: #b37834;
-            --dark-brown: #3a2012;
-            --text-color: #222;
-            --bg-color: #f9f7f2;
-            --note-orange: #d67a21;
+            --orange: #C46A1A;
+            --dark-brown: #331A0F;
+            --text-color: #222222;
         }
 
-        * {
-            box-sizing: border-box;
+        body, html {
             margin: 0;
             padding: 0;
-        }
-
-        @page { size: A4; margin: 0; }
-        .flyer { page-break-inside: avoid; }
-
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
+            width: 794px;
             height: 1122px;
-            min-height: 1122px;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(#e5e2d9 1px, transparent 1px);
-            background-size: 20px 20px;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Arial', sans-serif;
             color: var(--text-color);
+            background-color: transparent;
         }
 
-        /* Main Flyer - fills entire A4 page */
+        .page-bg {
+            width: 794px;
+            height: 1122px;
+            background-image: url('static/background.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+        }
+
         .flyer {
-            width: 100%;
-            min-height: 1122px;
-            height: 100%;
-            background-color: var(--bg-color);
-            background-image: radial-gradient(#e5e2d9 1px, transparent 1px);
-            background-size: 20px 20px;
-            padding: 30px 50px 40px;
-            position: relative;
-            border: 2px solid #d4cfc3;
-            box-sizing: border-box;
+            width: 794px;
+            height: 1122px;
+            padding: 25px 105px 210px 105px;
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
-            color: var(--text-color);
+            box-sizing: border-box;
+            position: relative;
         }
 
-        /* Decorative Corners (Simulated) */
-        .flyer::before, .flyer::after {
-            content: "✿";
-            position: absolute;
-            font-size: 40px;
-            color: #d4cfc3;
-            opacity: 0.6;
-        }
-        .flyer::before { top: 6px; left: 6px; }
-        .flyer::after { top: 6px; right: 6px; }
-
-        .corner-bottom-left, .corner-bottom-right {
-            content: "✿";
-            position: absolute;
-            font-size: 28px;
-            color: #d4cfc3;
-            opacity: 0.6;
-            bottom: 6px;
-        }
-        .corner-bottom-left { left: 6px; }
-        .corner-bottom-right { right: 6px; }
-
-        /* Header / Logo */
-        .header {
+        .logo-container {
             text-align: center;
-            margin-bottom: 12px;
+            margin-top: 5px;
+            margin-bottom: -15px;
         }
 
-        .logo-placeholder {
-            font-size: 24px;
-            font-weight: bold;
-            color: var(--dark-brown);
+        .logo-container img {
+            width: 210px;
             display: inline-block;
         }
-        .logo-placeholder span { color: #4e8a3a; } /* Tree color */
 
-        .tagline {
-            font-size: 10px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
+        .title {
+            text-align: center;
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: 68px;
             font-weight: bold;
-            margin-top: 5px;
-            display: block;
+            color: var(--orange);
+            margin: 5px 0 0 0;
+            line-height: 1;
         }
 
-        /* Plan Titles */
-        .plan-title {
+        .subtitle {
             text-align: center;
-            font-size: 82px;
-            color: var(--gold-color);
-            font-family: "Times New Roman", Times, serif;
-            margin: 8px 0 0 0;
+            font-family: 'Brush Script MT', 'Great Vibes', cursive;
+            font-size: 40px;
+            color: var(--dark-brown);
+            margin: -5px 0 10px 0;
+            font-weight: 500;
+        }
+
+        .divider {
+            width: 100%;
+            height: 1px;
+            background-color: #c9b49e;
+            margin: 0;
+        }
+
+        .content {
+            padding: 15px 5px 15px 5px;
+        }
+
+        .whats-included {
+            font-size: 26px;
+            font-weight: bold;
+            color: var(--orange);
+            margin-bottom: 15px;
+        }
+
+        .bullets {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 15px 0;
+        }
+
+        .bullets li {
+            position: relative;
+            padding-left: 20px;
+            font-size: 18px;
+            line-height: 1.5;
+            margin-bottom: 12px;
+            color: #111;
             font-weight: normal;
         }
 
-        .sub-plan-title {
-            text-align: center;
-            font-size: 30px;
-            font-family: 'Brush Script MT', cursive;
-            margin-top: -6px;
-            margin-bottom: 16px;
-            color: var(--dark-brown);
-        }
-
-        hr {
-            border: 0;
-            border-top: 1px solid #d4cfc3;
-            margin: 14px 0;
-        }
-
-        /* Content Section */
-        .content-section {
-            padding: 0 24px;
-        }
-
-        .section-heading {
-            color: var(--gold-color);
-            font-size: 28px;
-            margin-bottom: 12px;
-            font-weight: 800;
-        }
-
-        .feature-list {
-            list-style: none;
-        }
-
-        .feature-list li {
-            font-size: 18px;
-            margin-bottom: 10px;
-            position: relative;
-            padding-left: 24px;
-            line-height: 1.5;
-        }
-
-        .feature-list li::before {
+        .bullets li::before {
             content: "•";
             position: absolute;
             left: 0;
+            top: 0;
             color: var(--dark-brown);
+            font-size: 22px;
         }
 
         .note {
-            margin-top: 12px;
-            font-size: 16px;
+            font-size: 18px;
             line-height: 1.5;
+            color: #111;
+            margin-top: 5px;
         }
 
-        .note span {
-            color: var(--note-orange);
+        .note-label {
+            color: var(--orange);
             font-weight: bold;
         }
 
-        /* Image Gallery */
         .gallery {
             display: flex;
             justify-content: space-between;
-            margin-top: 24px;
-            gap: 18px;
-            flex: 1;
-            min-height: 0;
+            gap: 22px;
+            padding: 15px 0;
         }
 
-        .gallery-item {
+        .card {
             flex: 1;
-            text-align: center;
             display: flex;
             flex-direction: column;
-            min-width: 0;
+            align-items: center;
         }
 
-        .gallery-caption {
+        .card-title {
             font-size: 16px;
             font-weight: bold;
-            margin-bottom: 10px;
-            min-height: 36px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
             color: var(--dark-brown);
-            flex-shrink: 0;
-        }
-
-        .image-placeholder {
-            width: 100%;
-            flex: 1;
-            min-height: 180px;
-            border: 1px solid #d4cfc3;
-            border-radius: 8px;
-            background-color: #fff;
+            text-align: center;
+            margin-bottom: 10px;
+            height: 38px;
             display: flex;
-            align-items: center;
+            align-items: flex-end;
             justify-content: center;
-            overflow: hidden;
+            line-height: 1.2;
         }
 
-        .image-placeholder img {
+        .card-img-wrapper {
+            width: 100%;
+            height: 135px;
+            border: 3px solid var(--orange);
+            border-radius: 12px;
+            padding: 1px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-sizing: border-box;
+            background: #fff;
+        }
+
+        .card-img-wrapper img {
             width: 100%;
             height: 100%;
-            object-fit: contain;
-            border-radius: 6px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
         }
 
-        /* Details Section */
-        .details-container {
-            margin-top: 20px;
+        .bottom-section {
             display: flex;
-            border-top: 1px solid #d4cfc3;
-            padding-top: 16px;
+            align-items: center;
+            padding: 20px 15px 0 35px;
+            margin-top: auto;
+            margin-bottom: 45px;
         }
 
-        .details-left {
-            flex: 1.5;
-            font-size: 18px;
-            line-height: 2;
-            color: var(--dark-brown);
-            font-weight: bold;
-        }
-
-        .details-right {
-            flex: 1;
-            border-left: 1px solid #d4cfc3;
-            padding-left: 24px;
+        .left-info {
+            flex: 1.2;
             display: flex;
             flex-direction: column;
-            justify-content: center;
+            gap: 8px;
+        }
+
+        .info-row {
+            font-size: 20px;
+            font-weight: bold;
+            color: var(--dark-brown);
+        }
+
+        .info-row span {
+            font-weight: normal;
+        }
+
+        .vert-divider {
+            width: 1px;
+            height: 80px;
+            background-color: var(--dark-brown);
+            margin: 0 40px;
+        }
+
+        .right-info {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 25px;
         }
 
         .total-label {
             font-size: 22px;
             font-weight: bold;
             color: var(--dark-brown);
+            line-height: 1.2;
         }
 
-        .total-amount {
+        .total-value {
             font-size: 24px;
-            margin-left: 10px;
-        }
-
-        /* Footer */
-        .footer {
-            margin-top: 20px;
-            padding-top: 18px;
-            text-align: center;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
+            color: var(--dark-brown);
             font-weight: bold;
-            font-size: 18px;
         }
 
-        .phone-btn {
-            border: 2px solid var(--dark-brown);
-            padding: 10px 24px;
-            border-radius: 15px;
-            display: inline-flex;
+        .footer {
+            display: flex;
+            justify-content: center;
             align-items: center;
-            gap: 5px;
+            gap: 15px;
+            margin-bottom: 5px;
         }
 
-        .phone-icon {
-            background-color: var(--gold-color);
-            color: white;
-            border-radius: 50%;
-            width: 24px;
-            height: 24px;
+        .cta-text {
             font-size: 14px;
+            font-weight: bold;
+            color: var(--dark-brown);
+            text-transform: uppercase;
+        }
+
+        .cta-box {
             display: flex;
             align-items: center;
+            gap: 8px;
+            border: 1px solid #777;
+            border-radius: 20px;
+            padding: 4px 18px 4px 4px;
+        }
+
+        .icon-circle {
+            width: 26px;
+            height: 26px;
+            background-color: var(--orange);
+            border-radius: 50%;
+            display: flex;
             justify-content: center;
+            align-items: center;
+        }
+
+        .icon-circle svg {
+            width: 14px;
+            height: 14px;
+            fill: white;
+        }
+
+        .phone-num {
+            font-size: 16px;
+            font-weight: bold;
+            color: #222;
         }
     </style>
 </head>
 <body>
-
+    <div class="page-bg"></div>
     <div class="flyer">
-        <div class="corner-bottom-left">✿</div>
-        <div class="corner-bottom-right">✿</div>
+        
+        <!-- Header -->
+        <div class="logo-container">
+            <img src="static/mr-coconut-logo.png" alt="Mr. Coconut">
+        </div>
 
-        <header class="header">
-            <img src="static/logo.png" style="width: 120px;" alt="Mr. Coconut">
-        </header>
+        <div class="title">Gold Plan</div>
+        <div class="subtitle">Basic Starter Plan</div>
 
-        <h1 class="plan-title">Gold Plan</h1>
-        <h2 class="sub-plan-title">Basic Starter Plan</h2>
+        <div class="divider"></div>
 
-        <hr>
-
-        <div class="content-section">
-            <h3 class="section-heading">What's Included:</h3>
-            <ul class="feature-list">
+        <div class="content">
+            <div class="whats-included">What's Included:</div>
+            <ul class="bullets">
                 <li>Premium Personalized coconuts with customized straws.</li>
                 <li>Opener / Punching key for easy opening and serving.</li>
                 <li>Mr. Coconut Ensures Safe and Timely Delivery of Personalized Coconut Boxes to your City or Venue</li>
             </ul>
-            <p class="note"><span>Note :</span> Service staff, table or counter setup, and décor are to be managed by your team.</p>
+            <div class="note">
+                <span class="note-label">Note :</span> Service staff, table or counter setup, and décor are to be managed by your team.
+            </div>
         </div>
 
-        <hr>
+        <div class="divider"></div>
 
         <div class="gallery">
-            <div class="gallery-item">
-                <div class="gallery-caption">Customize Straw<br>& Coconut</div>
-                <div class="image-placeholder"><img src="static/gold_coconut.jpg" alt="Coconut"></div>
+            <div class="card">
+                <div class="card-title">Customize Straw<br>& Coconut</div>
+                <div class="card-img-wrapper">
+                    <img src="static/gold_coconut.jpg" alt="Customize Straw & Coconut">
+                </div>
             </div>
-            <div class="gallery-item">
-                <div class="gallery-caption">Coconut Opener</div>
-                <div class="image-placeholder"><img src="static/gold_opener.jpg" alt="Opener"></div>
+            <div class="card">
+                <div class="card-title">Coconut Opener</div>
+                <div class="card-img-wrapper">
+                    <img src="static/gold_opener.jpg" alt="Coconut Opener">
+                </div>
             </div>
-            <div class="gallery-item">
-                <div class="gallery-caption">Coconut Box<br>Packaging</div>
-                <div class="image-placeholder"><img src="static/gold_box.jpg" alt="Boxes"></div>
-            </div>
-        </div>
-
-        <div class="details-container">
-            <div class="details-left">
-                Date - {{ event_date }}<br>
-                City - {{ city }}<br>
-                No. of Coconut - {{ coconuts }}
-            </div>
-            <div class="details-right">
-                <div class="total-label">Total Amount <span class="total-amount">- {{ total_amount }}</span></div>
+            <div class="card">
+                <div class="card-title">Coconut Box<br>Packaging</div>
+                <div class="card-img-wrapper">
+                    <img src="static/gold_box.jpg" alt="Coconut Box Packaging">
+                </div>
             </div>
         </div>
 
-        <footer class="footer">
-            CONNECT WITH US FOR ANY ASSISTANCE 
-            <div class="phone-btn">
-                <span class="phone-icon">📞</span>
-                +91-9799999069
+        <div class="bottom-section">
+            <div class="left-info">
+                <div class="info-row">Date - <span>{{ event_date }}</span></div>
+                <div class="info-row">City - <span>{{ city }}</span></div>
+                <div class="info-row">No. of Coconut - <span>{{ coconuts }}</span></div>
             </div>
-        </footer>
+            <div class="vert-divider"></div>
+            <div class="right-info">
+                <div class="total-label">Total<br>Amount</div>
+                <div class="total-value">- {{ total_amount }}</div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="cta-text">CONNECT WITH US FOR ANY ASSISTANCE</div>
+            <div class="cta-box">
+                <div class="icon-circle">
+                    <svg viewBox="0 0 24 24">
+                        <path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/>
+                    </svg>
+                </div>
+                <div class="phone-num">+91-9799999069</div>
+            </div>
+        </div>
+
     </div>
-
 </body>
 </html>

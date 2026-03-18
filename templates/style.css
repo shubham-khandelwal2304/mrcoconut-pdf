@@ -1,0 +1,392 @@
+/* Base variables - overridden by plan-specific classes */
+:root {
+    --accent: #C46A1A;
+    --accent-dark: #331A0F;
+    --divider-color: #c9b49e;
+    --text-color: #222222;
+}
+
+/* Plan-specific color schemes */
+.plan-gold {
+    --accent: #C46A1A;
+    --accent-dark: #331A0F;
+    --divider-color: #c9b49e;
+}
+
+.plan-platinum {
+    --accent: #0b1e36;
+    --accent-dark: #0b1e36;
+    --divider-color: #0b1e36;
+}
+
+.plan-diamond {
+    --accent: #7b2915;
+    --accent-dark: #7b2915;
+    --divider-color: #7b2915;
+}
+
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 794px;
+    height: 1122px;
+    font-family: 'Arial', sans-serif;
+    color: var(--text-color);
+    background-color: transparent;
+}
+
+.page-bg {
+    width: 794px;
+    height: 1122px;
+    background-image: url('../static/background.png');
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+}
+
+.flyer {
+    width: 794px;
+    height: 1122px;
+    padding: 25px 105px 210px 105px;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    position: relative;
+}
+
+.logo-container {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: -15px;
+}
+
+.logo-container img {
+    width: 210px;
+    display: inline-block;
+}
+
+.title {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 68px;
+    font-weight: bold;
+    color: var(--accent);
+    margin: 5px 0 0 0;
+    line-height: 1;
+}
+
+.plan-diamond .title {
+    margin: 5px 0 25px 0;
+}
+
+.subtitle {
+    text-align: center;
+    font-family: 'Brush Script MT', 'Great Vibes', cursive;
+    font-size: 40px;
+    color: var(--accent-dark);
+    margin: -5px 0 10px 0;
+    font-weight: 500;
+}
+
+.plan-platinum .subtitle {
+    font-family: 'Arial', sans-serif;
+    font-size: 20px;
+    color: var(--accent);
+    margin: 5px 0 15px 0;
+    line-height: 1.4;
+}
+
+.divider {
+    width: 100%;
+    height: 1px;
+    background-color: var(--divider-color);
+    margin: 0;
+}
+
+.content {
+    padding: 15px 5px 15px 5px;
+}
+
+.plan-diamond .content {
+    padding: 15px 0;
+}
+
+.whats-included {
+    font-size: 26px;
+    font-weight: bold;
+    color: var(--accent);
+    margin-bottom: 15px;
+}
+
+.bullets {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 15px 0;
+}
+
+.plan-diamond .bullets {
+    margin: 0;
+}
+
+.bullets li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 18px;
+    line-height: 1.5;
+    margin-bottom: 12px;
+    color: #111;
+    font-weight: normal;
+}
+
+.plan-platinum .bullets li {
+    color: var(--accent);
+}
+
+.plan-platinum .bullets li::before {
+    color: var(--accent);
+}
+
+.plan-diamond .bullets li {
+    font-size: 16.5px;
+    margin-bottom: 16px;
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.plan-diamond .bullets li:last-child {
+    margin-bottom: 0;
+}
+
+.plan-diamond .bullets li::before {
+    top: 2px;
+    color: var(--accent);
+    font-size: 18px;
+}
+
+.bullets li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    top: 0;
+    color: var(--accent-dark);
+    font-size: 22px;
+}
+
+.note {
+    font-size: 18px;
+    line-height: 1.5;
+    color: #111;
+    margin-top: 5px;
+}
+
+.note-label {
+    color: var(--accent);
+    font-weight: bold;
+}
+
+.gallery {
+    display: flex;
+    justify-content: space-between;
+    gap: 22px;
+    padding: 15px 0;
+}
+
+.plan-diamond .gallery {
+    justify-content: center;
+    gap: 60px;
+}
+
+.card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.plan-diamond .card {
+    width: 180px;
+    flex: none;
+}
+
+.card-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: var(--accent-dark);
+    text-align: center;
+    margin-bottom: 10px;
+    height: 38px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    line-height: 1.2;
+}
+
+.plan-platinum .card-title,
+.plan-diamond .card-title {
+    color: var(--accent);
+}
+
+.card-img-wrapper {
+    width: 100%;
+    height: 135px;
+    border: 3px solid var(--accent);
+    border-radius: 12px;
+    padding: 1px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    background: #fff;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+    display: block;
+}
+
+.bottom-section {
+    display: flex;
+    align-items: center;
+    padding: 20px 15px 0 35px;
+    margin-top: auto;
+    margin-bottom: 45px;
+}
+
+.plan-platinum .bottom-section {
+    margin-bottom: 15px;
+}
+
+.left-info {
+    flex: 1.2;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.info-row {
+    font-size: 20px;
+    font-weight: bold;
+    color: var(--accent-dark);
+}
+
+.plan-platinum .info-row,
+.plan-diamond .info-row {
+    color: var(--accent);
+}
+
+.info-row span {
+    font-weight: normal;
+}
+
+.vert-divider {
+    width: 1px;
+    height: 80px;
+    background-color: var(--accent-dark);
+    margin: 0 40px;
+}
+
+.plan-platinum .vert-divider,
+.plan-diamond .vert-divider {
+    background-color: var(--accent);
+}
+
+.right-info {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+.total-label {
+    font-size: 22px;
+    font-weight: bold;
+    color: var(--accent-dark);
+    line-height: 1.2;
+}
+
+.plan-platinum .total-label,
+.plan-diamond .total-label {
+    color: var(--accent);
+}
+
+.total-value {
+    font-size: 24px;
+    color: var(--accent-dark);
+    font-weight: bold;
+}
+
+.plan-platinum .total-value,
+.plan-diamond .total-value {
+    color: var(--accent);
+}
+
+.footer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 5px;
+}
+
+.plan-platinum .footer {
+    margin-bottom: 35px;
+}
+
+.cta-text {
+    font-size: 14px;
+    font-weight: bold;
+    color: var(--accent-dark);
+    text-transform: uppercase;
+}
+
+.plan-platinum .cta-text,
+.plan-diamond .cta-text {
+    color: var(--accent);
+}
+
+.cta-box {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid #777;
+    border-radius: 20px;
+    padding: 4px 18px 4px 4px;
+}
+
+.plan-platinum .cta-box,
+.plan-diamond .cta-box {
+    border-color: var(--accent);
+}
+
+.icon-circle {
+    width: 26px;
+    height: 26px;
+    background-color: var(--accent);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.icon-circle svg {
+    width: 14px;
+    height: 14px;
+    fill: white;
+}
+
+.phone-num {
+    font-size: 16px;
+    font-weight: bold;
+    color: #222;
+}
+
+.plan-platinum .phone-num,
+.plan-diamond .phone-num {
+    color: var(--accent);
+}
